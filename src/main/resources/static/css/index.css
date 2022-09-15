@@ -1,0 +1,35 @@
+.panel-head{
+    background-color: dodgerblue;
+    padding: 10px 10px 10px 15px;
+    color: white;
+}
+
+.panel-head-content{
+    display: flex;
+    justify-content: space-between
+}
+
+.panel-body{
+    border: solid 2px dodgerblue;
+    padding: 20px 10px 10px 10px;
+    margin-bottom: 20px
+}
+
+.button{
+    background-color: black !important;
+    color: white !important;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.navigation{
+    margin-bottom: 15px;
+}
+
+.navigation > a{
+    font-size: 20px !important;
+}
