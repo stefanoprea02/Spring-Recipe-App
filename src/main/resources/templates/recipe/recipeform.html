@@ -47,7 +47,7 @@
                         <h1>Edit Recipe Information</h1>
                     </div>
                     <div class="panel-body">
-                        <div class="row justify-content-around">
+                        <div class="row">
                             <div class="col-md-4 form-group"
                                  th:class="${#fields.hasErrors('description')} ? 'col-md-4 form-group is-invalid' : 'col-md-4 form-group'">
                                 <label>Recipe Description:</label>
@@ -63,17 +63,12 @@
                                 <label>Categories:</label>
                             </div>
                             <div class="col-md-4 form-group">
-                                <div class="radio">
-                                    <label>
-                                        <input type="checkbox" value=""/>
-                                        Cat 1
-                                    </label>
-                                </div>
-                                <div class="radio" th:remove="all">
-                                    <label>
-                                        <input type="checkbox" value=""/>
-                                        Cat 2
-                                    </label>
+                                <ul style="margin-bottom: 6px" th:if="${not #lists.isEmpty(recipe.categories)}">
+                                    <li th:each="category : ${recipe.categories}" th:text="${category.description}"></li>
+                                </ul>
+                                <div style="margin-bottom: 6px">
+                                    <a class="button btn btn-default" th:href="@{'/recipe/' + ${recipe.id} + '/update/add-category'}"
+                                       role="button" style="margin-top: 0px">Add Category</a>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +185,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" style="margin-bottom: 30px">Submit</button>
             </form>
         </div>
     </div>

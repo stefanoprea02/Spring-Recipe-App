@@ -28,42 +28,28 @@
     <div style="display: flex; justify-content: center">
         <div class="navigation">
             <a th:href="@{'/'}">Home / </a>
-            <a th:href="@{'/recipe/' + ${recipeId} + '/show'}" th:text="${recipeDescription + ' / '}"></a>
-            <a th:href="@{'/recipe/' + ${recipeId} + '/ingredients'}">Ingredient List / </a>
-            <a th:href="@{'/recipe/' + ${recipeId} + '/ingredient/new'}" th:if="${ingredient.id == null}">New</a>
-            <a th:href="@{'/recipe/' + ${recipeId} + '/ingredient/' + ${ingredient.id} + '/update'}" th:if="${ingredient.id != null}">Update</a>
+            <a th:href="@{'/recipe/' + ${recipeId} + '/update'}">Update / </a>
+            <a th:href="@{'/recipe/' + ${recipeId} + '/update/new-category'}">New Category</a>
         </div>
     </div>
 
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <!--/*@thymesVar id="ingredient" type="guru.springframework.domain.IngredientCommand"*/-->
-            <form th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredient/'}"
+            <!--/*@thymesVar id="category" type="guru.springframework.domain.CategoryCommand"*/-->
+            <form th:object="${category}" th:action="@{'/recipe/' + ${recipeId} + '/update/add-category'}"
                   method="post">
-                <input type="hidden" th:field="*{id}"/>
                 <div class="panel-head">
-                    <h1>Edit Ingredient Information</h1>
+                    <h1>Add Recipe Category</h1>
                 </div>
                 <div class="panel-body">
 
                     <div class="row">
-                        <div class="col-md-4">
-                            <label>Ingredient Description:</label>
-                            <input type="text" class="form-control" th:field="*{description}"/>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label>Amount:</label>
-                            <input type="number" class="form-control" th:field="*{amount}"/>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label>Unit Of Measure : </label>
-                            <select class="form-control" name="uom.id">
-                                <option th:each="uomEach : ${uomList}"
-                                        th:value="${uomEach.id}"
-                                        th:selected="${uomEach.id.equals(ingredient.uom.id)}"
-                                        th:text="${uomEach.description}">Each
+                        <div class="col-md-12">
+                            <label>Category : </label>
+                            <select class="form-control" name="cat.id" th:field="*{id}">
+                                <option th:each="cat : ${categories}"
+                                        th:value="${cat.id}"
+                                        th:text="${cat.description}">Each
                                 </option>
                             </select>
                         </div>

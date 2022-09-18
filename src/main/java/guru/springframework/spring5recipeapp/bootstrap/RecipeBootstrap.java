@@ -148,6 +148,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         guacRecipe.getCategories().add(americanCategory);
         guacRecipe.getCategories().add(mexicanCategory);
+        americanCategory.getRecipes().add(guacRecipe);
+        mexicanCategory.getRecipes().add(guacRecipe);
 
         guacRecipe.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
         guacRecipe.setServings(4);
@@ -210,6 +212,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         tacosRecipe.getCategories().add(americanCategory);
         tacosRecipe.getCategories().add(mexicanCategory);
+        americanCategory.getRecipes().add(tacosRecipe);
+        mexicanCategory.getRecipes().add(tacosRecipe);
 
         tacosRecipe.setUrl("http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
         tacosRecipe.setServings(4);

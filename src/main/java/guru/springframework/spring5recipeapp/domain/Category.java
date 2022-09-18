@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -17,5 +18,5 @@ public class Category {
     private String description;
 
     @ManyToMany
-    private Set<Recipe> recipes;
+    private Set<Recipe> recipes = new HashSet<>();
 }

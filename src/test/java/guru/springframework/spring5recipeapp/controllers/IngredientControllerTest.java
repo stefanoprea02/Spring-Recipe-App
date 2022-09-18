@@ -19,8 +19,7 @@ import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -67,9 +66,11 @@ class IngredientControllerTest {
     void showIngredient() throws Exception{
         //given
         IngredientCommand ingredientCommand = new IngredientCommand();
+        RecipeCommand recipeCommand = new RecipeCommand();
 
         //when
         when(ingredientService.findByRecipeIdAndId(anyLong(), anyLong())).thenReturn(ingredientCommand);
+        when(recipeService.findCommandById(anyLong())).thenReturn(recipeCommand);
 
         mockMvc.perform(get("/recipe/1/ingredient/2/show"))
                 .andExpect(status().isOk())
@@ -94,7 +95,7 @@ class IngredientControllerTest {
                 .andExpect(model().attributeExists("ingredient"))
                 .andExpect(model().attributeExists("uomList"));
 
-        verify(recipeService).findCommandById(anyLong());
+        verify(recipeService, times(2)).findCommandById(anyLong());
 
     }
 
@@ -102,10 +103,12 @@ class IngredientControllerTest {
     public void testUpdateIngredientForm() throws Exception {
         //given
         IngredientCommand ingredientCommand = new IngredientCommand();
+        RecipeCommand recipeCommand = new RecipeCommand();
 
         //when
         when(ingredientService.findByRecipeIdAndId(anyLong(), anyLong())).thenReturn(ingredientCommand);
         when(unitOfMeasureService.listAllUoms()).thenReturn(new HashSet<>());
+        when(recipeService.findCommandById(anyLong())).thenReturn(recipeCommand);
 
         //then
         mockMvc.perform(get("/recipe/1/ingredient/2/update"))
@@ -132,7 +135,7 @@ class IngredientControllerTest {
                         .param("description", "some string")
                 )
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/recipe/2/ingredient/3/show"));
+                .andExpect(view().name("redirect:/recipe/2/ingredients"));
 
     }
 

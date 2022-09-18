@@ -1,8 +1,11 @@
 package guru.springframework.spring5recipeapp.controllers;
 
 import guru.springframework.spring5recipeapp.commands.RecipeCommand;
+import guru.springframework.spring5recipeapp.domain.Category;
 import guru.springframework.spring5recipeapp.domain.Recipe;
 import guru.springframework.spring5recipeapp.exceptions.NotFoundException;
+import guru.springframework.spring5recipeapp.services.CategoryService;
+import guru.springframework.spring5recipeapp.services.CategoryServiceImpl;
 import guru.springframework.spring5recipeapp.services.RecipeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,6 +30,9 @@ class RecipeControllerTest {
 
     @Mock
     RecipeService recipeService;
+
+    @Mock
+    CategoryService categoryService;
 
     @InjectMocks
     RecipeController recipeController;

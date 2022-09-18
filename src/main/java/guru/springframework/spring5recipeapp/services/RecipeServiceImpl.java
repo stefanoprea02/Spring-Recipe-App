@@ -1,5 +1,6 @@
 package guru.springframework.spring5recipeapp.services;
 
+import guru.springframework.spring5recipeapp.commands.CategoryCommand;
 import guru.springframework.spring5recipeapp.commands.RecipeCommand;
 import guru.springframework.spring5recipeapp.converters.RecipeCommandToRecipe;
 import guru.springframework.spring5recipeapp.converters.RecipeToRecipeCommand;
@@ -53,6 +54,11 @@ public class RecipeServiceImpl implements RecipeService{
     public RecipeCommand saveRecipeCommand(RecipeCommand command) {
         Recipe detachedRecipe = recipeCommandToRecipe.convert(command);
 
+        if(detachedRecipe.getId() != null) {
+            Recipe existingRecipe = findById(detachedRecipe.getId());
+            detachedRecipe.setImage(existingRecipe.getImage());
+            detachedRecipe.setCategories(existingRecipe.getCategories());
+        }
         Recipe savedRecipe = recipeRepository.save(detachedRecipe);
         log.debug("Saved RecipeId:" + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);

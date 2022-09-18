@@ -1,5 +1,5 @@
 .panel-head{
-    background-color: dodgerblue;
+    background-color: #559fe5;
     padding: 10px 10px 10px 15px;
     color: white;
 }
@@ -10,20 +10,22 @@
 }
 
 .panel-body{
-    border: solid 2px dodgerblue;
+    border: solid 2px #559fe5;
     padding: 20px 10px 10px 10px;
     margin-bottom: 20px
 }
 
 .button{
-    background-color: black !important;
+    background-color: #1363aa !important;
     color: white !important;
     margin-top: 8px;
     margin-left: 20px;
+    border-radius: 20px !important;
 }
 
 a{
     text-decoration: none !important;
+    font-weight: 450;
 }
 
 .navigation{
