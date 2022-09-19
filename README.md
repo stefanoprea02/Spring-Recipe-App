@@ -1,6 +1,21 @@
 # Spring Recipe App
 
-Created using HTML, CSS, JAVA, Spring Boot
+Created using HTML, CSS, JAVA, Spring Boot.
+
+<h2>Technologies used</h2>
+
+<ul>
+  <li>Template engine  :  Thymeleaf</li>
+  <li>Design  :  CSS, Bootstrap</li>
+  <li>Testing  :  JUnit5, Mockito</li>
+  <li>Database  :  H2, MySQL</li>
+  <li>Other  :  Spring Data JPA, Lombok</li>
+</ul>
+
+<details margin-bottom: 0px>
+    <summary><h2>ERD</h2></summary>
+    <img src="/images/Recipe-App.drawio.png" name="Recipe-App">
+</details>
 
 <details>
   <summary><h2>Screenshots from the app</h2></summary>
